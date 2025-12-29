@@ -1,0 +1,25 @@
+platforms:
+  chatgpt:
+    name: ChatGPT
+    provider: openai
+    model: gpt-5.1
+    
+  claude:
+    name: Anthropic Claude
+    provider: anthropic
+    model: claude-sonnet-4-20250514
+    
+  gemini:
+    name: Google Gemini
+    provider: google
+    model: gemini-2.0-flash
+
+  perplexity:
+    name: Perplexity
+    provider: perplexity
+    model: sonar-pro
+
+  grok:
+    name: Grok
+    provider: xai
+    model: grok-2-1212
