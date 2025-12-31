@@ -1,0 +1,81 @@
+systemPrompt: |
+  You are an AI visibility analyst specializing in topic generation for brand monitoring.
+  You analyze brand information, website content, and business context to generate topics that serve as "reporting pillars" - semantic groupings that organize how prompts are categorized.
+  You focus on customer-friendly language rather than internal jargon.
+
+userPromptTemplate: |
+  Business: {{businessName}} ({{website}})
+  {{strategyContext}}
+
+  ===========================================
+  TOPIC GENERATION
+  ===========================================
+
+  Generate 8-10 TOPICS that will serve as "reporting pillars" for grouping prompts.
+
+  Topics should be:
+  - MODERATELY BROAD: Capture a theme without being too narrow or too specific
+  - BUSINESS-RELEVANT: Directly related to what the business offers
+  - CUSTOMER-FRIENDLY: Use language customers actually use when searching
+
+  ===========================================
+  TOPIC BREADTH GUIDANCE
+  ===========================================
+
+  Topics should be broad enough to group multiple prompts, but specific enough to be meaningful.
+
+  TOO NARROW (avoid):
+  - "secure remote access for startups" → too specific
+  - "VPN for small dev teams" → too narrow
+  - "zero trust for healthcare" → too niche
+
+  JUST RIGHT (aim for this):
+  - "Secure Remote Access" → broad but meaningful
+  - "VPN Alternatives" → captures a theme
+  - "Zero Trust Networking" → specific category
+  - "Network Security Tools" → groupable theme
+
+  TOO BROAD (avoid):
+  - "cybersecurity" → too generic
+  - "software" → meaningless
+  - "business tools" → too vague
+
+  ===========================================
+  REQUIRED TOPIC TYPES
+  ===========================================
+
+  Include a mix of these topic types:
+
+  1. CORE PRODUCT CATEGORIES (3-4 topics)
+     What the product fundamentally IS
+     Examples: "zero trust network access", "mesh networking", "VPN solutions"
+
+  2. COMPETITIVE TOPICS (1-2 topics)
+     Where customers compare or seek alternatives
+     Examples: "tailscale alternatives", "VPN competitors"
+
+  3. USE CASE TOPICS (2-3 topics)
+     How customers use the product
+     Examples: "secure remote access", "team collaboration", "network management"
+
+  4. DIFFERENTIATOR TOPICS (1-2 topics)
+     What sets solutions apart
+     Examples: "open source networking", "enterprise security", "self-hosted solutions"
+
+  ===========================================
+  OUTPUT REQUIREMENTS
+  ===========================================
+
+  - Generate exactly 8-10 topics
+  - Each topic: 2-4 words (keep them concise)
+  - Use Title Case (capitalize first letter of each major word)
+    Examples: "Zero Trust Networking", "VPN Alternatives", "Secure Remote Access"
+  - NO audience qualifiers like "for startups", "for enterprises", "for developers"
+  - NO brackets, parentheses, or clarifications
+  - Do NOT include the brand name "{{businessName}}"
+  - Topics should be broad enough to group 3-5 related prompts each
+
+  Generate topics for {{businessName}}.
+
+temperature: 0.7
+maxOutputTokens: 15000

@@ -1,0 +1,47 @@
+import { Migration } from './migration-runner';
+
+/**
+ * Migration XXX: [Brief description]
+ * Date: YYYY-MM-DD
+ * Description: [Detailed description of what this migration does]
+ *
+ * Instructions for creating a new migration:
+ * 1. Copy this template to a new file named: XXX_description.ts
+ *    - XXX should be the next sequential number (e.g., 002, 003, etc.)
+ *    - Use lowercase and underscores for description
+ * 2. Update the migration object below with your changes
+ * 3. Add the migration to the allMigrations array in index.ts
+ * 4. Test both up() and down() migrations
+ *
+ * Example:
+ *   002_add_user_roles.ts
+ *   003_add_analytics_tables.ts
+ */
+export const migration_XXX: Migration = {
+  id: XXX, // Replace with sequential number
+  name: 'description_here', // Brief snake_case description
+
+  /**
+   * Apply the migration (upgrade schema)
+   */
+  up: (db) => {
+    db.exec(`
+      -- Your SQL statements here
+      -- Example:
+      -- ALTER TABLE users ADD COLUMN role TEXT DEFAULT 'user';
+      -- CREATE INDEX idx_users_role ON users(role);
+    `);
+  },
+
+  /**
+   * Rollback the migration (downgrade schema)
+   */
+  down: (db) => {
+    db.exec(`
+      -- Reverse your changes here
+      -- Example:
+      -- DROP INDEX IF EXISTS idx_users_role;
+      -- ALTER TABLE users DROP COLUMN role;
+    `);
+  }
+};

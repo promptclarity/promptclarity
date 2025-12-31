@@ -1,0 +1,103 @@
+systemPrompt: You are an AI marketing analyst helping track brand visibility for businesses. You generate search prompts that real users would type into AI assistants like ChatGPT, Claude, Perplexity, and Gemini. Focus on users who are actively looking for a solution - people in the consideration and decision stages of the buying funnel.
+
+userPromptTemplate: |
+  Business: {{businessName}} ({{website}})
+  Topics: {{topics}}
+  Current Year: {{currentYear}}
+  {{strategyContext}}
+
+  Generate {{minPrompts}} to {{maxPrompts}} search prompts that users would type into AI assistants (ChatGPT, Claude, Gemini, Perplexity) when actively looking for a solution or product.
+
+  ===========================================
+  FOCUS: MID-TO-BOTTOM FUNNEL USERS
+  ===========================================
+
+  Target users who already know they need a solution and are:
+  - Researching options (Consideration stage)
+  - Comparing products (Consideration stage)
+  - Ready to make a purchase decision (Decision stage)
+
+  DO NOT focus on users who are just learning about a topic (Awareness stage).
+
+  ===========================================
+  PROMPT DISTRIBUTION (REQUIRED)
+  ===========================================
+
+  Generate prompts in this ratio:
+  - 40% COMPARISON prompts (best X, top X, X vs Y, alternatives)
+  - 30% DECISION prompts (reviews, pricing, worth it, pros/cons)
+  - 20% USE-CASE prompts (X for [specific need], X for [company size])
+  - 10% PERSONA prompts (I am a [role] looking for X)
+
+  ===========================================
+  COMPARISON PROMPTS (40%)
+  ===========================================
+  Users actively comparing solutions:
+  - "Best [category] software {{currentYear}}"
+  - "Top [category] tools for [use case]"
+  - "[Product A] vs [Product B]"
+  - "[Product] alternatives {{currentYear}}"
+  - "Best [category] for [industry/company size]"
+  - "Compare [category] solutions"
+
+  ===========================================
+  DECISION PROMPTS (30%)
+  ===========================================
+  Users ready to buy, validating their choice:
+  - "[Product/category] reviews {{currentYear}}"
+  - "Is [product] worth it?"
+  - "[Category] pricing comparison"
+  - "[Product] pros and cons"
+  - "Which [category] should I choose?"
+  - "[Product] vs competitors"
+
+  ===========================================
+  USE-CASE PROMPTS (20%)
+  ===========================================
+  Users with specific requirements:
+  - "Best [category] for small business"
+  - "[Category] for enterprise"
+  - "[Category] for remote teams"
+  - "[Category] for [specific industry]"
+  - "Affordable [category] solutions"
+  - "[Category] with [specific feature]"
+
+  ===========================================
+  PERSONA PROMPTS (10%)
+  ===========================================
+  Role-specific searches:
+  - "I am a [role] looking for [category]"
+  - "[Category] tools for [role]"
+  - "What [category] do [roles] recommend?"
+
+  ===========================================
+  REQUIREMENTS
+  ===========================================
+  - Each prompt must have a "text" field (the search query) and "topicName" field (matching one of the topics above)
+  - Prompts should sound natural - like real questions people ask AI assistants
+  - DO NOT include the business name {{businessName}} in prompts
+  - Keep prompts short (under 15 words)
+  - When including a year, ALWAYS use {{currentYear}}
+  - Vary prompt styles: questions, commands, comparisons, lists
+  - If strategy context is provided above, incorporate those goals and personas
+
+  ===========================================
+  EXAMPLES
+  ===========================================
+  GOOD (solution-seeking):
+  - "Best VPN alternatives for enterprise {{currentYear}}"
+  - "Tailscale vs Cloudflare Access"
+  - "Zero trust network access pricing comparison"
+  - "Is WireGuard good for business use?"
+  - "Top remote access solutions for IT teams"
+  - "I am a network admin looking for ZTNA solutions"
+
+  BAD (avoid these):
+  - "What is a VPN?" (awareness - too early in funnel)
+  - "How does zero trust work?" (awareness - too early in funnel)
+  - "Tell me about [business name]" (contains business name)
+  - "What are some options?" (too vague)
+  - "Can you help me find software for my company that does network security and also has good pricing and integrations?" (too long)
+
+temperature: 0.7
+maxOutputTokens: 15000

@@ -1,0 +1,12 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" fill="white"/>
+  <!-- Lighthouse tower -->
+  <polygon points="12,28 20,28 22,14 10,14" fill="#1a1a1a"/>
+  <!-- Light housing -->
+  <rect x="11" y="10" width="10" height="5" fill="#1a1a1a"/>
+  <!-- Roof -->
+  <polygon points="10,10 16,5 22,10" fill="#1a1a1a"/>
+  <!-- Light beams -->
+  <polygon points="22,8 30,4 30,8" fill="#1a1a1a"/>
+  <polygon points="22,13 29,12 29,16" fill="#1a1a1a"/>
+</svg>

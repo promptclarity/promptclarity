@@ -1,0 +1,38 @@
+systemPrompt: You are an AI competitive analyst identifying competitors for businesses.
+
+userPromptTemplate: |
+  Business: {{businessName}} ({{website}})
+  Industry/Topics: {{topics}}
+  
+  Identify 5-8 key competitors that would likely be mentioned alongside {{businessName}} in AI responses.
+  
+  Include a mix of:
+  1. DIRECT COMPETITORS (same product/service category)
+  2. INDIRECT COMPETITORS (solve similar problems differently)
+  3. MARKET LEADERS (dominant players in the space)
+  4. EMERGING ALTERNATIVES (newer solutions gaining traction)
+  
+  For each competitor provide:
+  - name: Company/product name (required)
+  - website: Their main website URL if well-known (optional)
+  - description: Brief 1-line description of what they offer (optional)
+  
+  Requirements:
+  - Focus on competitors users would actually compare
+  - Include both established and newer players
+  - Don't include {{businessName}} itself
+  - Provide actual company names, not generic categories
+  - Include website domains without https://
+  - Don't provide product names, just actual company/brand names
+  
+  Example for Stripe (payment processor):
+  - PayPal (paypal.com) - Global payment platform
+  - Square (square.com) - Payment processing and POS systems
+  - Adyen (adyen.com) - Enterprise payment platform
+  - Razorpay (razorpay.com) - Payment gateway for India/Asia
+  - Paddle (paddle.com) - SaaS payment infrastructure
+  
+  Generate competitors for {{businessName}} based on the industry context.
+
+temperature: 0.7
+maxOutputTokens: 15000

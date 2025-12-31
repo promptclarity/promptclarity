@@ -1,0 +1,36 @@
+systemPrompt: You are an AI analyst specializing in brand mention detection and sentiment analysis.
+
+userPromptTemplate: |
+  Analyze the following AI response for brand and competitor mentions.
+
+  Response to analyze:
+  {{response}}
+
+  Brand to track: {{brandName}}
+  Competitors to track: {{competitors}}
+
+  Your task:
+  1. Extract any rankings or ordered lists of companies mentioned in the response
+     - Note the position, company name, reason for ranking (if provided), and sentiment
+  
+  2. Determine if {{brandName}} is mentioned anywhere in the response:
+     - Check for direct mentions (exact name)
+     - Check for variations (with/without spaces, punctuation, suffixes like Inc/LLC/Corp)
+     - Check for possessive forms ({{brandName}}'s)
+     - Check for common variations: "{{brandNameNoSpaces}}", "{{brandNameLowercase}}"
+  
+  3. Identify which competitors from the list are mentioned
+  
+  4. Assess the overall sentiment towards the brand if mentioned
+  
+  5. Rate your confidence in the analysis (0-1 scale)
+
+  Be thorough - a company is "mentioned" if it appears ANYWHERE in the text, even without a specific ranking.
+  Look in all contexts: listed, compared, recommended, discussed, referenced, etc.
+  
+  The company names in the rankings should be actual company names, not product names. 
+  The companies in the rankings list doesn't necessary have to be from the competitor list but if it looks like the one from the 
+  competitor list use the competitor name in the ranking.
+
+temperature: 0.3
+maxOutputTokens: 10000
