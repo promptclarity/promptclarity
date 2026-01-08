@@ -62,9 +62,7 @@ chown -R nextjs:nodejs /app/data 2>/dev/null || true
 # Copy default config files on first run (if config dir doesn't exist)
 if [ ! -d "$CONFIG_DIR" ]; then
     echo "✓ First run detected - copying default configuration files..."
-    cp -r "$DEFAULT_CONFIG_DIR" "$CONFIG_DIR"
-    chown -R nextjs:nodejs "$CONFIG_DIR" 2>/dev/null || true
-    chmod -R 755 "$CONFIG_DIR"
+    cp -r "$DEFAULT_CONFIG_DIR" "$CONFIG_DIR" || true
     echo "✓ Configuration files copied to $CONFIG_DIR"
     echo "  You can customize these files and restart the container to apply changes."
 else
