@@ -40,6 +40,9 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Copy default config files (will be copied to /app/data/config on first run)
+COPY --from=builder /app/config ./config-defaults
+
 # Create data directory for SQLite database
 RUN mkdir -p /app/data && chown -R nextjs:nodejs /app/data
 
@@ -49,10 +52,24 @@ COPY --chmod=755 <<'EOF' /usr/local/bin/docker-entrypoint.sh
 set -e
 
 SECRET_FILE="/app/data/.nextauth_secret"
+CONFIG_DIR="/app/data/config"
+DEFAULT_CONFIG_DIR="/app/config-defaults"
 
 # Ensure data directory exists
 mkdir -p /app/data
 chown -R nextjs:nodejs /app/data 2>/dev/null || true
+
+# Copy default config files on first run (if config dir doesn't exist)
+if [ ! -d "$CONFIG_DIR" ]; then
+    echo "✓ First run detected - copying default configuration files..."
+    cp -r "$DEFAULT_CONFIG_DIR" "$CONFIG_DIR"
+    chown -R nextjs:nodejs "$CONFIG_DIR" 2>/dev/null || true
+    chmod -R 755 "$CONFIG_DIR"
+    echo "✓ Configuration files copied to $CONFIG_DIR"
+    echo "  You can customize these files and restart the container to apply changes."
+else
+    echo "✓ Using existing configuration from $CONFIG_DIR"
+fi
 
 # Generate NEXTAUTH_SECRET if not provided
 if [ -z "$NEXTAUTH_SECRET" ]; then
